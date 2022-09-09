@@ -1,13 +1,13 @@
 package GridGin
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/hyahm/golog"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 func ServeGroup(app *gin.RouterGroup, db *mgo.Database) {
@@ -71,7 +71,6 @@ func ServeGroup(app *gin.RouterGroup, db *mgo.Database) {
 			return
 		}
 		_id := bson.ObjectIdHex(key)
-		golog.Info(key)
 		file, err := bucket.OpenId(_id)
 		if err != nil {
 			context.JSON(404, gin.H{"msg": err.Error()})
