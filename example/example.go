@@ -3,7 +3,7 @@ package example
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/hyahm/golog"
+	"github.com/mole828/GridFsGinRouter"
 	"gopkg.in/mgo.v2"
 )
 
@@ -16,11 +16,11 @@ func main() {
 	app := gin.New()
 	app.LoadHTMLGlob("template/*")
 	app.Use(gin.Logger())
-	ServeGroup(&app.RouterGroup, db)
+	GridGin.ServeGroup(app.Group("/"), db)
 
 	port := 7999
 	addr := fmt.Sprintf("localhost:%d", port)
-	golog.Infof("listen: %v", addr)
+	fmt.Printf("listen: %v", addr)
 	if err := app.Run(fmt.Sprintf(":%d", port)); err != nil {
 		return
 	}
