@@ -1,4 +1,4 @@
-package main
+package GridFS
 
 import (
 	"github.com/gin-gonic/gin"
