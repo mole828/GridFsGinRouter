@@ -1,4 +1,4 @@
-module GinGrid
+module GridFsGinRouter
 
 go 1.19
 
