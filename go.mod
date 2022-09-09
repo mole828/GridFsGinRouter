@@ -1,4 +1,4 @@
-module GridFsGinRouter
+module github.com/mole828/GridFsGinRouter
 
 go 1.19
 
