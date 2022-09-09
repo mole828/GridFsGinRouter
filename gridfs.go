@@ -12,7 +12,6 @@ import (
 
 func ServeGroup(app *gin.RouterGroup, db *mgo.Database) {
 
-	files := db.C("fs.files")
 	bucket := db.GridFS("fs")
 
 	app.GET("/", func(context *gin.Context) {
@@ -20,7 +19,7 @@ func ServeGroup(app *gin.RouterGroup, db *mgo.Database) {
 	})
 
 	app.GET("/list", func(context *gin.Context) {
-		find := files.Find(gin.H{})
+		find := bucket.Find(nil)
 		var result []interface{}
 		find.All(&result)
 		context.JSON(200, result)
