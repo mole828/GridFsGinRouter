@@ -15,9 +15,15 @@ func main() {
 	}
 	db := dial.DB("moles")
 	app := gin.New()
-	//app.LoadHTMLGlob("../template/*")
+	app.LoadHTMLGlob("template/**")
+	app.GET("/", func(context *gin.Context) {
+		context.HTML(200, "index.html", gin.H{})
+	})
 	app.Use(gin.Logger())
-	GridGin.ServeGroup(app.Group("/"), db)
+
+	group := app.Group("/")
+
+	GridGin.ServeGroup(group, db)
 
 	port := 7999
 	addr := fmt.Sprintf("localhost:%d", port)
