@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/gin-gonic/gin"
-	"github.com/mole828/GridFsGinRouter"
+	GridGin "github.com/mole828/GridFsGinRouter"
 	"gopkg.in/mgo.v2"
 )
 
@@ -14,7 +15,7 @@ func main() {
 	}
 	db := dial.DB("moles")
 	app := gin.New()
-	app.LoadHTMLGlob("template/*")
+	//app.LoadHTMLGlob("../template/*")
 	app.Use(gin.Logger())
 	GridGin.ServeGroup(app.Group("/"), db)
 

@@ -11,12 +11,7 @@ import (
 )
 
 func ServeGroup(app *gin.RouterGroup, db *mgo.Database) {
-
 	bucket := db.GridFS("fs")
-
-	app.GET("/", func(context *gin.Context) {
-		context.HTML(200, "index.html", gin.H{})
-	})
 
 	app.GET("/list", func(context *gin.Context) {
 		find := bucket.Find(nil)
